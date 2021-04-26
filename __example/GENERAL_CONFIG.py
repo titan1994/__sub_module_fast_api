@@ -31,16 +31,8 @@ class NoObjectMixin(ABC):
 
 class FastApiConfig(NoObjectMixin):
     """
-    Конфигурация фаст-апи
+    Статичная конфигурация фаст-апи
     """
-
-    """
-    AERICH + TORTOISE
-    """
-
-    # путь по регламенту тортоиса к конфигуратору тортоиса (В МОДУЛЕ РАСКОММЕНТИРОВАТЬ ПЕРВОЕ!)
-    # DEFAULT_AERICH_CFG_PATH = 'MODS.rest_core.aerich_proc.config.TORTOISE_ORM'
-    DEFAULT_AERICH_CFG_PATH = 'aerich_proc.config.TORTOISE_ORM'
 
     # Основная папка с моделями тортоиса
     DEFAULT_AERICH_MODEL_PACK_PATH = '__fast_api_app.models'
@@ -57,22 +49,23 @@ class FastApiConfig(NoObjectMixin):
         general_path / DEFAULT_AERICH_MODEL_PACK_PATH.replace('.', '/') / 'general'
 
 
-"""
-Наследованием выбираем ядро-фреймворк. 
-Дописываем общие для всех фреймворков параметры конфигурации
-"""
+class RestCoreConfig(FastApiConfig):
+    """
+    Унаследованные поля для изменения от фаст апи
+    """
+    DEFAULT_AERICH_CFG_PATH = 'MODS.rest_core.aerich_proc.config.TORTOISE_ORM'
+    DEFAULT_DB_URI = None
 
 
-class GeneralConfig(FastApiConfig):
+class GeneralConfig(RestCoreConfig):
     """
     Общая конфа - она импортируется по проекту
+    Когда модулей много - они все будут унаследованы этой конфой
     """
-    PROJECT_NAME = 'Ядро фаст апи. Submodule'  # Open API спецификация чувствительна к имени - будьте осторожны
+
+    PROJECT_NAME = 'Ядро фаст апи. Submodule'
+    ITS_DOCKER = None
     DEFAULT_APP_MODE = AppMode.debug
     DEFAULT_PORT = 5111  # Порт
-
-    DEFAULT_DB_URI = None
-    ITS_DOCKER = None
-
     PROJECT_GENERAL_FOLDER = general_path
     DEFAULT_WORKER_COUNT = cpu_count() + 1

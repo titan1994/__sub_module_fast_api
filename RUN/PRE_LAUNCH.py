@@ -11,7 +11,7 @@
 """
 
 from os import environ, getcwd, getenv
-from  pathlib import Path
+from pathlib import Path
 from inspect import getfile as inspect_getfile
 from shutil import copy as shutil_copy
 import sys
@@ -70,9 +70,9 @@ if FastApiConfig in GeneralConfig.__bases__ and GeneralConfig.DEFAULT_DB_URI:
     # Чтобы работал педантик и прочие радости
 
     from tortoise import Tortoise
-    from MODS.rest_core.RUN.__tools.tortoise import models_inspector
+    from .__tools import tortoise as tor_tools
 
-    Tortoise.init_models(['aerich.models', *models_inspector()], 'models')
+    Tortoise.init_models(['aerich.models', *tor_tools.models_inspector()], 'models')
 
 APP_INIT = True
 

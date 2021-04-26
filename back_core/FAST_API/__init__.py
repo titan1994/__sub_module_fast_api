@@ -5,8 +5,8 @@
 from fastapi import FastAPI
 from GENERAL_CONFIG import GeneralConfig
 from tortoise.contrib.fastapi import register_tortoise
-from ...aerich_proc import config as cfg_tortoise
-from ...RUN.__tools import fast_api_init
+from aerich_proc import config as cfg_tortoise
+from RUN.__tools import fast_api_init
 
 app = FastAPI(title=GeneralConfig.PROJECT_NAME)
 
