@@ -5,7 +5,7 @@
 
 if __name__ == '__main__':
 
-    from RUN.PRE_LAUNCH import pre_launch
+    from pack_core.RUN.PRE_LAUNCH import pre_launch
 
     pre_launch()
 

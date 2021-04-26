@@ -17,8 +17,8 @@ async def run_create():
     :return:
     """
     print('FAST API INIT')
-    pass
 
+    # from tortoise import Tortoise
     # await Tortoise.init(config=TORTOISE_ORM)
     #
     # pattern, status = await Pattern.get_or_create(name=GeneralConfig.system_pattern['name'])

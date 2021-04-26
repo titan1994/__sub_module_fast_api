@@ -53,7 +53,7 @@ class RestCoreConfig(FastApiConfig):
     """
     Унаследованные поля для изменения от фаст апи
     """
-    DEFAULT_AERICH_CFG_PATH = 'MODS.rest_core.aerich_proc.config.TORTOISE_ORM'
+    DEFAULT_AERICH_CFG_PATH = 'MODS.rest_core.pack_core.aerich_proc.config.TORTOISE_ORM'
     DEFAULT_DB_URI = None
 
 

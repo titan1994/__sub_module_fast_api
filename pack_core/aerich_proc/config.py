@@ -5,8 +5,9 @@
 
 from tortoise.backends.base.config_generator import expand_db_url
 
-from RUN.__tools import tortoise as tools
-from RUN import PRE_LAUNCH as PreLaunch
+
+from ..RUN.__tools import tortoise as tools
+from ..RUN import PRE_LAUNCH as PreLaunch
 
 if PreLaunch.GeneralConfig.DEFAULT_DB_URI:
     TORTOISE_ORM = {
