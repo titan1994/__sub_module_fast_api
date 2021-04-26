@@ -1,6 +1,6 @@
 """
 Основная конфигурация проекта.
-Сначала мы решаем какое ядро используем - потом наследуем его в GeneralConfig
+Собирает в себе все конфигурации подмодулей
 """
 
 from MODS.scripts.python.easy_scripts import PROJECT_GENERAL_FOLDER as general_path
@@ -29,7 +29,15 @@ class NoObjectMixin(ABC):
         pass
 
 
-class FastApiConfig(NoObjectMixin):
+class FastApiSettings(NoObjectMixin):
+    """
+    Настройка фаст-апи, адаптированная под основной проект
+    """
+    DEFAULT_AERICH_CFG_PATH = 'MODS.rest_core.pack_core.aerich_proc.config.TORTOISE_ORM'
+    DEFAULT_DB_URI = None
+
+
+class FastApiConfig(FastApiSettings):
     """
     Статичная конфигурация фаст-апи
     """
@@ -49,23 +57,19 @@ class FastApiConfig(NoObjectMixin):
         general_path / DEFAULT_AERICH_MODEL_PACK_PATH.replace('.', '/') / 'general'
 
 
-class RestCoreConfig(FastApiConfig):
-    """
-    Унаследованные поля для изменения от фаст апи
-    """
-    DEFAULT_AERICH_CFG_PATH = 'MODS.rest_core.pack_core.aerich_proc.config.TORTOISE_ORM'
-    DEFAULT_DB_URI = None
-
-
-class GeneralConfig(RestCoreConfig):
+class GeneralConfig(FastApiConfig):
     """
     Общая конфа - она импортируется по проекту
-    Когда модулей много - они все будут унаследованы этой конфой
     """
-
-    PROJECT_NAME = 'Ядро фаст апи. Submodule'
-    ITS_DOCKER = None
+    PROJECT_NAME = 'СМПБ. Паспорт Фермера'  # Open API спецификация чувствительна к имени - будьте осторожны
     DEFAULT_APP_MODE = AppMode.debug
     DEFAULT_PORT = 5111  # Порт
+
+    ITS_DOCKER = None
+    JAVA_KEY_VALUE_JSONB_URL = None
+    CLICKHOUSE_SHOWCASE_URL = None
+    KAFKA_URL = None
+    YCL_KAFKA_URL = None
+
     PROJECT_GENERAL_FOLDER = general_path
     DEFAULT_WORKER_COUNT = cpu_count() + 1
