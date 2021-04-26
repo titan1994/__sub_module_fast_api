@@ -1,0 +1,308 @@
+13-Apr-21 14:26:26 - Usage: aerich [OPTIONS] COMMAND [ARGS]...
+Try 'aerich -h' for help.
+
+Error: You must exec init first
+13-Apr-21 14:26:27 - Usage: aerich [OPTIONS] COMMAND [ARGS]...
+Try 'aerich -h' for help.
+
+Error: You must exec init first
+13-Apr-21 14:27:12 - Started server process [15680]
+13-Apr-21 14:27:12 - Waiting for application startup.
+13-Apr-21 14:27:12 - Application startup complete.
+13-Apr-21 14:27:12 - Uvicorn running on http://0.0.0.0:5111 (Press CTRL+C to quit)
+13-Apr-21 14:36:59 - Started server process [1440]
+13-Apr-21 14:36:59 - Waiting for application startup.
+13-Apr-21 14:36:59 - Application startup complete.
+13-Apr-21 14:36:59 - Uvicorn running on http://0.0.0.0:5111 (Press CTRL+C to quit)
+13-Apr-21 16:11:45 - Started server process [2916]
+13-Apr-21 16:11:45 - Waiting for application startup.
+13-Apr-21 16:11:46 - Application startup complete.
+13-Apr-21 16:11:46 - Uvicorn running on http://0.0.0.0:5111 (Press CTRL+C to quit)
+13-Apr-21 16:12:08 - Started server process [10092]
+13-Apr-21 16:12:08 - Waiting for application startup.
+13-Apr-21 16:12:08 - Application startup complete.
+13-Apr-21 16:12:08 - Uvicorn running on http://0.0.0.0:5111 (Press CTRL+C to quit)
+19-Apr-21 12:11:29 - Started server process [17564]
+19-Apr-21 12:11:29 - Waiting for application startup.
+19-Apr-21 12:11:29 - Application startup complete.
+19-Apr-21 12:11:29 - Uvicorn running on http://0.0.0.0:5111 (Press CTRL+C to quit)
+19-Apr-21 12:13:35 - Started server process [5740]
+19-Apr-21 12:13:35 - Waiting for application startup.
+19-Apr-21 12:13:36 - Application startup complete.
+19-Apr-21 12:13:36 - Uvicorn running on http://0.0.0.0:5111 (Press CTRL+C to quit)
+20-Apr-21 14:27:18 - <BrokerConnection node_id=bootstrap-0 host=localhost:9091 <connected> [IPv6 ('::1', 9091, 0, 0)]>: socket disconnected
+20-Apr-21 14:27:18 - <BrokerConnection node_id=bootstrap-0 host=localhost:9091 <connected> [IPv6 ('::1', 9091, 0, 0)]>: socket disconnected
+20-Apr-21 14:27:18 - <BrokerConnection node_id=bootstrap-0 host=localhost:9091 <connected> [IPv6 ('::1', 9091, 0, 0)]>: socket disconnected
+20-Apr-21 14:27:18 - <BrokerConnection node_id=bootstrap-0 host=localhost:9091 <connected> [IPv6 ('::1', 9091, 0, 0)]>: socket disconnected
+20-Apr-21 14:27:18 - <BrokerConnection node_id=bootstrap-0 host=localhost:9091 <connected> [IPv6 ('::1', 9091, 0, 0)]>: socket disconnected
+21-Apr-21 11:01:13 - ENV LOAD
+NO DOCKER RUN
+Traceback (most recent call last):
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\tortoise\backends\asyncpg\client.py", line 36, in translate_exceptions_
+    return await func(self, *args)
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\tortoise\backends\asyncpg\client.py", line 141, in execute_insert
+    return await connection.fetchrow(query, *values)
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\asyncpg\connection.py", line 641, in fetchrow
+    data = await self._execute(
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\asyncpg\connection.py", line 1625, in _execute
+    result, _ = await self.__execute(
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\asyncpg\connection.py", line 1650, in __execute
+    return await self._do_execute(
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\asyncpg\connection.py", line 1677, in _do_execute
+    stmt = await self._get_statement(
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\asyncpg\connection.py", line 375, in _get_statement
+    statement = await self._protocol.prepare(
+  File "asyncpg\protocol\protocol.pyx", line 166, in prepare
+asyncpg.exceptions.UndefinedTableError: relation "aerich" does not exist
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\users\i.kozlov.corp\appdata\local\programs\python\python38\lib\runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "c:\users\i.kozlov.corp\appdata\local\programs\python\python38\lib\runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "C:\Users\i.kozlov.CORP\.virtualenvs\cl_smpb-TG3Xv2FV\Scripts\aerich.exe\__main__.py", line 7, in <module>
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\aerich\cli.py", line 298, in main
+    cli()
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\click\core.py", line 829, in __call__
+    return self.main(*args, **kwargs)
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\click\core.py", line 782, in main
+    rv = self.invoke(ctx)
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\click\core.py", line 1259, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\click\core.py", line 1066, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\click\core.py", line 610, in invoke
+    return callback(*args, **kwargs)
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\click\decorators.py", line 21, in new_func
+    return f(get_current_context(), *args, **kwargs)
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\aerich\cli.py", line 41, in wrapper
+    loop.run_until_complete(f(*args, **kwargs))
+  File "c:\users\i.kozlov.corp\appdata\local\programs\python\python38\lib\asyncio\base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\aerich\cli.py", line 120, in upgrade
+    await Aerich.create(
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\tortoise\models.py", line 1095, in create
+    await instance.save(using_db=db, force_create=True)
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\tortoise\models.py", line 917, in save
+    await executor.execute_insert(self)
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\tortoise\backends\base\executor.py", line 203, in execute_insert
+    insert_result = await self.db.execute_insert(self.insert_query, values)
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\tortoise\backends\asyncpg\client.py", line 38, in translate_exceptions_
+    raise OperationalError(exc)
+tortoise.exceptions.OperationalError: relation "aerich" does not exist
+21-Apr-21 11:08:03 - ENV LOAD
+NO DOCKER RUN
+Traceback (most recent call last):
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\tortoise\backends\asyncpg\client.py", line 36, in translate_exceptions_
+    return await func(self, *args)
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\tortoise\backends\asyncpg\client.py", line 141, in execute_insert
+    return await connection.fetchrow(query, *values)
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\asyncpg\connection.py", line 641, in fetchrow
+    data = await self._execute(
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\asyncpg\connection.py", line 1625, in _execute
+    result, _ = await self.__execute(
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\asyncpg\connection.py", line 1650, in __execute
+    return await self._do_execute(
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\asyncpg\connection.py", line 1677, in _do_execute
+    stmt = await self._get_statement(
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\asyncpg\connection.py", line 375, in _get_statement
+    statement = await self._protocol.prepare(
+  File "asyncpg\protocol\protocol.pyx", line 166, in prepare
+asyncpg.exceptions.UndefinedTableError: relation "aerich" does not exist
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\users\i.kozlov.corp\appdata\local\programs\python\python38\lib\runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "c:\users\i.kozlov.corp\appdata\local\programs\python\python38\lib\runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "C:\Users\i.kozlov.CORP\.virtualenvs\cl_smpb-TG3Xv2FV\Scripts\aerich.exe\__main__.py", line 7, in <module>
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\aerich\cli.py", line 298, in main
+    cli()
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\click\core.py", line 829, in __call__
+    return self.main(*args, **kwargs)
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\click\core.py", line 782, in main
+    rv = self.invoke(ctx)
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\click\core.py", line 1259, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\click\core.py", line 1066, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\click\core.py", line 610, in invoke
+    return callback(*args, **kwargs)
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\click\decorators.py", line 21, in new_func
+    return f(get_current_context(), *args, **kwargs)
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\aerich\cli.py", line 41, in wrapper
+    loop.run_until_complete(f(*args, **kwargs))
+  File "c:\users\i.kozlov.corp\appdata\local\programs\python\python38\lib\asyncio\base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\aerich\cli.py", line 120, in upgrade
+    await Aerich.create(
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\tortoise\models.py", line 1095, in create
+    await instance.save(using_db=db, force_create=True)
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\tortoise\models.py", line 917, in save
+    await executor.execute_insert(self)
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\tortoise\backends\base\executor.py", line 203, in execute_insert
+    insert_result = await self.db.execute_insert(self.insert_query, values)
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\tortoise\backends\asyncpg\client.py", line 38, in translate_exceptions_
+    raise OperationalError(exc)
+tortoise.exceptions.OperationalError: relation "aerich" does not exist
+21-Apr-21 11:09:31 - ENV LOAD
+NO DOCKER RUN
+Traceback (most recent call last):
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\tortoise\backends\asyncpg\client.py", line 36, in translate_exceptions_
+    return await func(self, *args)
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\tortoise\backends\asyncpg\client.py", line 141, in execute_insert
+    return await connection.fetchrow(query, *values)
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\asyncpg\connection.py", line 641, in fetchrow
+    data = await self._execute(
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\asyncpg\connection.py", line 1625, in _execute
+    result, _ = await self.__execute(
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\asyncpg\connection.py", line 1650, in __execute
+    return await self._do_execute(
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\asyncpg\connection.py", line 1677, in _do_execute
+    stmt = await self._get_statement(
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\asyncpg\connection.py", line 375, in _get_statement
+    statement = await self._protocol.prepare(
+  File "asyncpg\protocol\protocol.pyx", line 166, in prepare
+asyncpg.exceptions.UndefinedTableError: relation "aerich" does not exist
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\users\i.kozlov.corp\appdata\local\programs\python\python38\lib\runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "c:\users\i.kozlov.corp\appdata\local\programs\python\python38\lib\runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "C:\Users\i.kozlov.CORP\.virtualenvs\cl_smpb-TG3Xv2FV\Scripts\aerich.exe\__main__.py", line 7, in <module>
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\aerich\cli.py", line 298, in main
+    cli()
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\click\core.py", line 829, in __call__
+    return self.main(*args, **kwargs)
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\click\core.py", line 782, in main
+    rv = self.invoke(ctx)
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\click\core.py", line 1259, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\click\core.py", line 1066, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\click\core.py", line 610, in invoke
+    return callback(*args, **kwargs)
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\click\decorators.py", line 21, in new_func
+    return f(get_current_context(), *args, **kwargs)
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\aerich\cli.py", line 41, in wrapper
+    loop.run_until_complete(f(*args, **kwargs))
+  File "c:\users\i.kozlov.corp\appdata\local\programs\python\python38\lib\asyncio\base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\aerich\cli.py", line 120, in upgrade
+    await Aerich.create(
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\tortoise\models.py", line 1095, in create
+    await instance.save(using_db=db, force_create=True)
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\tortoise\models.py", line 917, in save
+    await executor.execute_insert(self)
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\tortoise\backends\base\executor.py", line 203, in execute_insert
+    insert_result = await self.db.execute_insert(self.insert_query, values)
+  File "c:\users\i.kozlov.corp\.virtualenvs\cl_smpb-tg3xv2fv\lib\site-packages\tortoise\backends\asyncpg\client.py", line 38, in translate_exceptions_
+    raise OperationalError(exc)
+tortoise.exceptions.OperationalError: relation "aerich" does not exist
+21-Apr-21 11:10:27 - Started server process [9308]
+21-Apr-21 11:10:27 - Waiting for application startup.
+21-Apr-21 11:10:27 - Application startup complete.
+21-Apr-21 11:10:27 - Uvicorn running on http://0.0.0.0:5111 (Press CTRL+C to quit)
+21-Apr-21 11:11:22 - Started server process [9908]
+21-Apr-21 11:11:22 - Waiting for application startup.
+21-Apr-21 11:11:22 - Application startup complete.
+21-Apr-21 11:11:22 - Uvicorn running on http://0.0.0.0:5111 (Press CTRL+C to quit)
+21-Apr-21 11:21:44 - Started server process [18996]
+21-Apr-21 11:21:44 - Waiting for application startup.
+21-Apr-21 11:21:44 - Application startup complete.
+21-Apr-21 11:21:44 - Uvicorn running on http://0.0.0.0:5111 (Press CTRL+C to quit)
+21-Apr-21 11:29:40 - Started server process [11360]
+21-Apr-21 11:29:40 - Waiting for application startup.
+21-Apr-21 11:29:40 - Application startup complete.
+21-Apr-21 11:29:40 - Uvicorn running on http://0.0.0.0:5111 (Press CTRL+C to quit)
+23-Apr-21 12:30:56 - Started server process [11440]
+23-Apr-21 12:30:56 - Waiting for application startup.
+23-Apr-21 12:30:56 - Application startup complete.
+23-Apr-21 12:30:56 - Uvicorn running on http://0.0.0.0:5111 (Press CTRL+C to quit)
+23-Apr-21 15:27:43 - Started server process [332]
+23-Apr-21 15:27:43 - Waiting for application startup.
+23-Apr-21 15:27:43 - Application startup complete.
+23-Apr-21 15:27:43 - Uvicorn running on http://0.0.0.0:5111 (Press CTRL+C to quit)
+23-Apr-21 15:48:18 - Started server process [11280]
+23-Apr-21 15:48:18 - Waiting for application startup.
+23-Apr-21 15:48:18 - Application startup complete.
+23-Apr-21 15:48:18 - Uvicorn running on http://0.0.0.0:5111 (Press CTRL+C to quit)
+23-Apr-21 16:10:46 - Started server process [9636]
+23-Apr-21 16:10:46 - Waiting for application startup.
+23-Apr-21 16:10:46 - Application startup complete.
+23-Apr-21 16:10:46 - Uvicorn running on http://0.0.0.0:5111 (Press CTRL+C to quit)
+23-Apr-21 16:17:03 - Started server process [10560]
+23-Apr-21 16:17:03 - Waiting for application startup.
+23-Apr-21 16:17:03 - Application startup complete.
+23-Apr-21 16:17:03 - Uvicorn running on http://0.0.0.0:5111 (Press CTRL+C to quit)
+23-Apr-21 16:29:43 - Started server process [4352]
+23-Apr-21 16:29:43 - Waiting for application startup.
+23-Apr-21 16:29:43 - Application startup complete.
+23-Apr-21 16:29:43 - Uvicorn running on http://0.0.0.0:5111 (Press CTRL+C to quit)
+23-Apr-21 16:31:44 - Started server process [2952]
+23-Apr-21 16:31:44 - Waiting for application startup.
+23-Apr-21 16:31:44 - Application startup complete.
+23-Apr-21 16:31:44 - Uvicorn running on http://0.0.0.0:5111 (Press CTRL+C to quit)
+23-Apr-21 16:44:27 - Started server process [11360]
+23-Apr-21 16:44:27 - Waiting for application startup.
+23-Apr-21 16:44:27 - Application startup complete.
+23-Apr-21 16:44:27 - Uvicorn running on http://0.0.0.0:5111 (Press CTRL+C to quit)
+26-Apr-21 10:21:06 - Started server process [20632]
+26-Apr-21 10:21:06 - Waiting for application startup.
+26-Apr-21 10:21:06 - Application startup complete.
+26-Apr-21 10:21:06 - Uvicorn running on http://0.0.0.0:5111 (Press CTRL+C to quit)
+26-Apr-21 13:57:15 - Started server process [12144]
+26-Apr-21 13:57:15 - Waiting for application startup.
+26-Apr-21 13:57:16 - Application startup complete.
+26-Apr-21 13:57:16 - Uvicorn running on http://0.0.0.0:5111 (Press CTRL+C to quit)
+26-Apr-21 13:57:38 - Started server process [9648]
+26-Apr-21 13:57:38 - Waiting for application startup.
+26-Apr-21 13:57:38 - Application startup complete.
+26-Apr-21 13:57:38 - Uvicorn running on http://0.0.0.0:5111 (Press CTRL+C to quit)
+26-Apr-21 14:24:24 - Started server process [8700]
+26-Apr-21 14:24:24 - Waiting for application startup.
+26-Apr-21 14:24:24 - Application startup complete.
+26-Apr-21 14:24:24 - Uvicorn running on http://0.0.0.0:5111 (Press CTRL+C to quit)
+26-Apr-21 14:26:06 - Started server process [20524]
+26-Apr-21 14:26:06 - Waiting for application startup.
+26-Apr-21 14:26:06 - Application startup complete.
+26-Apr-21 14:26:06 - Uvicorn running on http://0.0.0.0:5111 (Press CTRL+C to quit)
+26-Apr-21 14:26:35 - Started server process [8608]
+26-Apr-21 14:26:35 - Waiting for application startup.
+26-Apr-21 14:26:35 - Application startup complete.
+26-Apr-21 14:26:35 - Uvicorn running on http://0.0.0.0:5111 (Press CTRL+C to quit)
+26-Apr-21 15:00:28 - Started server process [1168]
+26-Apr-21 15:00:28 - Waiting for application startup.
+26-Apr-21 15:00:28 - Application startup complete.
+26-Apr-21 15:00:28 - Uvicorn running on http://0.0.0.0:5111 (Press CTRL+C to quit)
+26-Apr-21 15:12:31 - Started server process [18532]
+26-Apr-21 15:12:31 - Waiting for application startup.
+26-Apr-21 15:12:31 - Application startup complete.
+26-Apr-21 15:12:31 - Uvicorn running on http://0.0.0.0:5111 (Press CTRL+C to quit)
+26-Apr-21 15:13:00 - Started server process [25952]
+26-Apr-21 15:13:00 - Waiting for application startup.
+26-Apr-21 15:13:00 - Application startup complete.
+26-Apr-21 15:13:00 - Uvicorn running on http://0.0.0.0:5111 (Press CTRL+C to quit)
+26-Apr-21 15:14:17 - Started server process [7544]
+26-Apr-21 15:14:17 - Waiting for application startup.
+26-Apr-21 15:14:17 - Application startup complete.
+26-Apr-21 15:14:17 - Uvicorn running on http://0.0.0.0:5111 (Press CTRL+C to quit)
+26-Apr-21 15:14:44 - Started server process [14148]
+26-Apr-21 15:14:44 - Waiting for application startup.
+26-Apr-21 15:14:44 - Application startup complete.
+26-Apr-21 15:14:44 - Uvicorn running on http://0.0.0.0:5111 (Press CTRL+C to quit)
+26-Apr-21 18:08:17 - Started server process [17264]
+26-Apr-21 18:08:17 - Waiting for application startup.
+26-Apr-21 18:08:17 - Application startup complete.
+26-Apr-21 18:08:17 - Uvicorn running on http://0.0.0.0:5111 (Press CTRL+C to quit)
+26-Apr-21 18:15:35 - Started server process [3036]
+26-Apr-21 18:15:35 - Waiting for application startup.
+26-Apr-21 18:15:35 - Application startup complete.
+26-Apr-21 18:15:35 - Uvicorn running on http://0.0.0.0:5111 (Press CTRL+C to quit)
