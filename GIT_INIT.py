@@ -14,8 +14,8 @@ ACCOUNT_NAME = 'titan1994'
 GEN_MOD_FOLDER = 'MODS'
 
 submodules = {
-    # '__sub_module_scripts': 'scripts',
-    # '__sub_module_documents': 'documents',
+    '__sub_module_scripts': 'scripts',
+    '__sub_module_documents': 'documents',
      '__sub_modile_name_space_standart': 'standart_namespace',
 }
 

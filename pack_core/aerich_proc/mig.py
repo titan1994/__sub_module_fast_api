@@ -9,8 +9,9 @@ from datetime import datetime
 
 from MODS.scripts.python.cmd_run import run, run_with_answer
 from MODS.scripts.python.easy_scripts import path_file_name_module
+from GENERAL_CONFIG import GeneralConfig
 
-DEFAULT_FILE_MIGRATION_LOG = 'migration.log'
+DEFAULT_FILE_MIGRATION_LOG = GeneralConfig.PROJECT_GENERAL_FOLDER / '__migrations' / 'migration.log'
 
 logging.basicConfig(
     filename=str(path_file_name_module(__name__, DEFAULT_FILE_MIGRATION_LOG)),
