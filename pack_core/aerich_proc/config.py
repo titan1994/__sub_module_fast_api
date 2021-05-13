@@ -24,3 +24,15 @@ if PreLaunch.GeneralConfig.DEFAULT_DB_URI:
 else:
     TORTOISE_ORM = None
 
+def get_tortoise_config():
+    return {
+        "connections": {
+            "default": expand_db_url(PreLaunch.GeneralConfig.DEFAULT_DB_URI, True)
+        },
+        "apps": {
+            "models": {
+                "models": ['aerich.models', *tools.models_inspector()],
+                "default_connection": "default",
+            }
+        },
+    }
