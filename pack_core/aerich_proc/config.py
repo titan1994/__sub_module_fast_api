@@ -5,24 +5,9 @@
 
 from tortoise.backends.base.config_generator import expand_db_url
 
-
 from ..RUN.__tools import tortoise as tools
 from ..RUN import PRE_LAUNCH as PreLaunch
 
-if PreLaunch.GeneralConfig.DEFAULT_DB_URI:
-    TORTOISE_ORM = {
-        "connections": {
-            "default": expand_db_url(PreLaunch.GeneralConfig.DEFAULT_DB_URI, True)
-        },
-        "apps": {
-            "models": {
-                "models": ['aerich.models', *tools.models_inspector()],
-                "default_connection": "default",
-            }
-        },
-    }
-else:
-    TORTOISE_ORM = None
 
 def get_tortoise_config():
     return {
@@ -36,3 +21,9 @@ def get_tortoise_config():
             }
         },
     }
+
+
+if PreLaunch.GeneralConfig.DEFAULT_DB_URI:
+    TORTOISE_ORM = get_tortoise_config()
+else:
+    TORTOISE_ORM = None
