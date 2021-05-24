@@ -2,7 +2,8 @@
 Инициализация ядра Fast-API
 """
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request, Depends
+from fastapi.security import OAuth2PasswordBearer
 from GENERAL_CONFIG import GeneralConfig
 from tortoise.contrib.fastapi import register_tortoise
 from ...aerich_proc import config as cfg_tortoise
@@ -20,6 +21,7 @@ if GeneralConfig.DEFAULT_DB_URI:
     )
 
 app.include_router(system_routes.router)
-fast_api_init.register_all_routes_in_app(app)
 
 db = None  # для поддержки многофреймворочности
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
+fast_api_init.register_all_routes_in_app(app)
