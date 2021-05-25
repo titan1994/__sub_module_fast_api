@@ -35,7 +35,6 @@ hypercorn = "*"
 asynch = "*"
 # DOT ENV
 python-dotenv = "*"
-
 # Network
 requests = "*"
 faker = "*"
@@ -43,6 +42,10 @@ httpx = "*"
 # Docker
 pyyaml = "*"
 aerich = "*"
+cryptography = "*"
+jose = "*"
+passlib = "*"
+python-jose = "3.3.2"
 
 [dev-packages]
 

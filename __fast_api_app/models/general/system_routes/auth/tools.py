@@ -1,8 +1,11 @@
 from jose import jwt
 from passlib.context import CryptContext
 from .models import Token
+from cryptography.fernet import Fernet
+from fastapi import Depends, HTTPException
 
-SECRET_KEY = "09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7"
+
+SECRET_KEY = Fernet.generate_key().decode()
 ALGORITHM = "HS256"
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
@@ -23,3 +26,11 @@ def verify_password(plain_password, hashed_password):
 
 def get_password_hash(password):
     return pwd_context.hash(password)
+
+
+async def verify_token(token: str = Depends(oauth2_scheme)):
+    token_db = await Token.filter(token=token).first()
+    if token_db:
+        if token_db.is_active:
+            return True
+    raise HTTPException(status_code=403, detail='Bad token')
