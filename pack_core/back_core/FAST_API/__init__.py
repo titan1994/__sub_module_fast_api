@@ -2,7 +2,7 @@
 Инициализация ядра Fast-API
 """
 
-from fastapi import FastAPI, Request, Depends
+from fastapi import FastAPI
 from fastapi.security import OAuth2PasswordBearer
 from GENERAL_CONFIG import GeneralConfig
 from tortoise.contrib.fastapi import register_tortoise

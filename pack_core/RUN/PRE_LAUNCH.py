@@ -47,6 +47,7 @@ else:
 
 # data-base
 if FastApiConfig in GeneralConfig.__bases__:
+    GeneralConfig.SECRET_KEY = getenv('SECRET_KEY')
     if GeneralConfig.ITS_DOCKER:
         DEFAULT_DB_URI = getenv('DATABASE_SETTINGS_URL_DOCKER')
     else:

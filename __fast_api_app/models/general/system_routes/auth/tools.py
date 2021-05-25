@@ -3,6 +3,7 @@ from passlib.context import CryptContext
 from .models import Token
 from cryptography.fernet import Fernet
 from fastapi import Depends, HTTPException
+from pack_core.back_core.FAST_API import oauth2_scheme
 
 
 SECRET_KEY = Fernet.generate_key().decode()

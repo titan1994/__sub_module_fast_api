@@ -55,6 +55,7 @@ class FastApiConfig(NoObjectMixin):
     # папка в которую смотрит анализатор моделей и ищет их там
     DEFAULT_AERICH_MODEL_APP_PATH = \
         general_path / DEFAULT_AERICH_MODEL_PACK_PATH.replace('.', '/') / 'general'
+    SECRET_KEY = None
 
 
 """

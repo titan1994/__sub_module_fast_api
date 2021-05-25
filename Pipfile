@@ -42,10 +42,12 @@ httpx = "*"
 # Docker
 pyyaml = "*"
 aerich = "*"
-cryptography = "*"
+cryptography = "==3.3.2"
 jose = "*"
 passlib = "*"
 python-jose = "3.3.2"
+python-multipart = "*"
+bcrypt = "*"
 
 [dev-packages]
 

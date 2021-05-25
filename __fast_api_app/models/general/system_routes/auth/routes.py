@@ -1,16 +1,15 @@
-from typing import Optional
-
 from fastapi import Depends, APIRouter, HTTPException
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-from .pd import User_Pydantic, UserIn_Pydantic
+from fastapi.security import  OAuth2PasswordRequestForm
+from .pd import User_Pydantic
 from .models import User
-from .tools import verify_password, get_password_hash, create_access_token
-from MODS.rest_core.pack_core.back_core.FAST_API import oauth2_scheme
+from .tools import verify_password, get_password_hash, create_access_token, verify_token
+from GENERAL_CONFIG import GeneralConfig
+
 
 router = APIRouter(
     prefix="/auth",
     tags=["Security"],
-    responses={200: {"message": "Methods for login, registration, authorization"}},
+    responses={200: {"message": "Methods for login, registration, authorization"}}
 )
 
 
@@ -19,6 +18,9 @@ async def reg(form_data: OAuth2PasswordRequestForm = Depends()):
     """
     Регистрация: шифруем пароль, создаём пользователя
     """
+    secret_key = form_data.client_secret
+    if secret_key != GeneralConfig.SECRET_KEY:
+        raise HTTPException(status_code=403, detail='Bad client secret')
     username = form_data.username
     password = form_data.password
     if not username or not password:
@@ -43,7 +45,7 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
         return {"access_token": token_model.token, "token_type": "bearer"}
 
 @router.post("/user")
-async def get_self(token: str = Depends(oauth2_scheme)):
+async def get_self(token=Depends(verify_token)):
     """
     Авторизация: проверяем пароль, создаём токен - получаем токен
     """
