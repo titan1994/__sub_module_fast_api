@@ -20,7 +20,7 @@ if GeneralConfig.DEFAULT_DB_URI:
         add_exception_handlers=True,
     )
 
-app.include_router(system_routes.router)
+# app.include_router(system_routes.router)
 
 db = None  # для поддержки многофреймворочности
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
