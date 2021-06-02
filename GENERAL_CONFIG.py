@@ -77,3 +77,8 @@ class GeneralConfig(FastApiConfig):
     PROJECT_GENERAL_FOLDER = general_path
     DEFAULT_WORKER_COUNT = cpu_count() + 1
     SECRET_KEY = None
+
+    CORS_WHITE_LIST = None
+    CORS_ALLOW_CREDENTIALS = None
+    CORS_ALLOW_METHODS = None
+    CORS_ALLOW_HEADERS = None

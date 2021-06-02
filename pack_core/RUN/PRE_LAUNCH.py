@@ -47,18 +47,39 @@ else:
 
 # data-base
 if FastApiConfig in GeneralConfig.__bases__:
+    """
+    Общие настройки для всех проектов на фаст апи
+    """
+
+    # CORS
+    GeneralConfig.CORS_WHITE_LIST = getenv('CORS_WHITE_LIST')
+    if GeneralConfig.CORS_WHITE_LIST:
+        print('ACTIVE FAST_API CORS')
+    else:
+        print('USE FAST_API WITHOUT CORS!')
+
+    GeneralConfig.CORS_ALLOW_CREDENTIALS = getenv('CORS_ALLOW_CREDENTIALS')
+    GeneralConfig.CORS_ALLOW_METHODS = getenv('CORS_ALLOW_METHODS')
+    GeneralConfig.CORS_ALLOW_HEADERS = getenv('CORS_ALLOW_HEADERS')
+
+    # Авторизация
     GeneralConfig.SECRET_KEY = getenv('SECRET_KEY')
+    if GeneralConfig.SECRET_KEY:
+        print('ACTIVE FAST_API AUTH WITH TOKEN')
+    else:
+        print('USE FAST_API WITHOUT AUTH!')
+
+    # Докер не докер
     if GeneralConfig.ITS_DOCKER:
         DEFAULT_DB_URI = getenv('DATABASE_SETTINGS_URL_DOCKER')
     else:
         DEFAULT_DB_URI = getenv('DATABASE_SETTINGS_URL')
 
+    # С базой данных или без
     if DEFAULT_DB_URI is None:
-        print('USE FAST_API WITHOUT ORM TORTOISE')
-        # class TortoiseCFGError(Exception):
-        #     pass
-        # raise TortoiseCFGError('ENV "DATABASE_SETTINGS_URL" IS NOT SET!')
+        print('USE FAST_API WITHOUT ORM TORTOISE!')
     else:
+        print('ACTIVE FAST_API + ORM TORTOISE')
         if DEFAULT_DB_URI.startswith('postgresql'):
             DEFAULT_DB_URI = DEFAULT_DB_URI.replace('postgresql', 'postgres')
 
