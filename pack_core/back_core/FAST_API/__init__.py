@@ -10,7 +10,9 @@ from tortoise.contrib.fastapi import register_tortoise
 from ...aerich_proc import config as cfg_tortoise
 from ...RUN.__tools import fast_api_init
 from . import system_routes
-
+from ...system_models.system_models import tortoise_state
+from os import getpid
+from socket import gethostname
 from GENERAL_CONFIG import GeneralConfig
 
 
@@ -54,3 +56,7 @@ if GeneralConfig.DEFAULT_DB_URI:
 db = None  # для поддержки многофреймворочности
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
 fast_api_init.register_all_routes_in_app(app)
+
+@app.on_event("startup")
+async def startup_event():
+    await tortoise_state.get_or_create(server=gethostname(), pid=getpid())

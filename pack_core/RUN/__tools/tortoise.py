@@ -4,7 +4,6 @@
 
 import pkgutil
 from os import walk
-
 from GENERAL_CONFIG import GeneralConfig
 
 DEFAULT_MODEL_FILE_NAME = 'models'
@@ -47,10 +46,14 @@ def models_inspector():
         if file_path.is_file():
             model_path = create_models_path(pack.module_finder.path.name, pack.name)
             result_model_path.append(model_path)
-    if '__sub_module_fast_api' in str(GeneralConfig.PROJECT_GENERAL_FOLDER):
-        result_model_path.append('rest_core.pack_core.back_core.FAST_API.system_models')
-    else:
-        result_model_path.append('MODS.rest_core.pack_core.back_core.FAST_API.system_models')
+    try:
+        from ...system_models import system_models
+        path_to_system_model = system_models.__file__.replace(str(GeneralConfig.PROJECT_GENERAL_FOLDER), '')[1:-3]
+        path_to_system_model = path_to_system_model.replace(r"\n"[:1], '.')
+        result_model_path.append(path_to_system_model)
+
+    except:
+        pass
     return result_model_path
 
 
