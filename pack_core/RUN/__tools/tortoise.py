@@ -47,7 +47,10 @@ def models_inspector():
         if file_path.is_file():
             model_path = create_models_path(pack.module_finder.path.name, pack.name)
             result_model_path.append(model_path)
-
+    if '__sub_module_fast_api' in str(GeneralConfig.PROJECT_GENERAL_FOLDER):
+        result_model_path.append('rest_core.pack_core.back_core.FAST_API.system_models')
+    else:
+        result_model_path.append('MODS.rest_core.pack_core.back_core.FAST_API.system_models')
     return result_model_path
 
 

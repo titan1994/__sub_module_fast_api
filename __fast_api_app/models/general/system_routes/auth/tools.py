@@ -4,6 +4,7 @@ from .models import Token
 from cryptography.fernet import Fernet
 from fastapi import Depends, HTTPException
 from pack_core.back_core.FAST_API import oauth2_scheme
+from GENERAL_CONFIG import GeneralConfig
 
 
 SECRET_KEY = Fernet.generate_key().decode()
@@ -28,10 +29,15 @@ def verify_password(plain_password, hashed_password):
 def get_password_hash(password):
     return pwd_context.hash(password)
 
+if getattr(GeneralConfig, 'SECRET_KEY', None):
+    async def verify_token(token = Depends(oauth2_scheme)):
+        token_db = await Token.filter(token=token).first()
+        if token_db:
+            if token_db.is_active:
+                return True
+        raise HTTPException(status_code=403, detail='Bad token')
+else:
+    async def verify_token(token = Depends(None)):
+        pass
 
-async def verify_token(token: str = Depends(oauth2_scheme)):
-    token_db = await Token.filter(token=token).first()
-    if token_db:
-        if token_db.is_active:
-            return True
-    raise HTTPException(status_code=403, detail='Bad token')
+

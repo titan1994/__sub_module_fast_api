@@ -17,5 +17,6 @@ if GeneralConfig.DEFAULT_APP_MODE == AppMode.debug:
 else:
     load_dotenv(Path(GeneralConfig.PROJECT_GENERAL_FOLDER / '.env.production'))
 
+
 ALL_ENV_LOAD = True
 
