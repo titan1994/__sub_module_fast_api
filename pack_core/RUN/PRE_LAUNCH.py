@@ -15,6 +15,7 @@ from pathlib import Path
 from inspect import getfile as inspect_getfile
 from shutil import copy as shutil_copy
 import sys
+from socket import gethostname
 
 # Для докера и продакшн сборки без виртуального окружения - указать явно путь
 sys.path.insert(0, getcwd())
@@ -23,13 +24,23 @@ from MODS.scripts.python.cmd_run import run
 from MODS.scripts.python.jinja import jinja_render_to_file
 from .__tools import pre_launch as launch_tools
 from GENERAL_CONFIG import GeneralConfig, FastApiConfig
-
+from ..aerich_proc import config as cfg_tortoise
+from ..system_models.system_models import tortoise_state
 """
 Для воркеров и приложения - начальный момент запуска
 
 Основная инициализация приложения - при каждом запуске,
 в том числе и через воркеры (параллельные процессы, по настоящему параллельные)
 """
+async def run_create():
+    """
+    Удаление информации о воркерах на этом сервере
+    :return:
+    """
+    print('Tortoise state delete old')
+    await Tortoise.init(config=cfg_tortoise.get_tortoise_config())
+    await tortoise_state.filter(server=gethostname()).delete()
+    await Tortoise.close_connections()
 
 # env OK
 from . import ENV as env_module
@@ -93,8 +104,10 @@ if FastApiConfig in GeneralConfig.__bases__ and GeneralConfig.DEFAULT_DB_URI:
 
     from tortoise import Tortoise
     from .__tools import tortoise as tor_tools
-
+    from asyncio import get_event_loop
+    get_event_loop().run_until_complete(run_create())
     Tortoise.init_models(['aerich.models', *tor_tools.models_inspector()], 'models')
+
 
 APP_INIT = True
 

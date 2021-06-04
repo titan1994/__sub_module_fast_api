@@ -46,7 +46,7 @@ if GeneralConfig.CORS_WHITE_LIST:
 if GeneralConfig.DEFAULT_DB_URI:
     register_tortoise(
         app,
-        cfg_tortoise.TORTOISE_ORM,
+        cfg_tortoise.get_tortoise_config(),
         generate_schemas=True,
         add_exception_handlers=True,
     )
