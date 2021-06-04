@@ -5,7 +5,7 @@
 import pkgutil
 from os import walk
 from GENERAL_CONFIG import GeneralConfig
-
+from pathlib import Path
 DEFAULT_MODEL_FILE_NAME = 'models'
 DEFAULT_PYDANTIC_FILE_NAME = 'pydmodel'
 
@@ -46,14 +46,12 @@ def models_inspector():
         if file_path.is_file():
             model_path = create_models_path(pack.module_finder.path.name, pack.name)
             result_model_path.append(model_path)
-    try:
-        from ...system_models import system_models
-        path_to_system_model = system_models.__file__.replace(str(GeneralConfig.PROJECT_GENERAL_FOLDER), '')[1:-3]
-        path_to_system_model = path_to_system_model.replace(r"\n"[:1], '.')
-        result_model_path.append(path_to_system_model)
 
-    except:
-        pass
+    from ...system_models import system_models
+    obj_path = [el for el in Path(system_models.__file__).parts if el not in GeneralConfig.PROJECT_GENERAL_FOLDER.parts]
+    path_to_system_model = '.'.join(obj_path)[:-3] # убираем .py
+    result_model_path.append(path_to_system_model)
+
     return result_model_path
 
 
