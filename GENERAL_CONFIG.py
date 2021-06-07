@@ -40,7 +40,7 @@ class FastApiConfig(NoObjectMixin):
 
     # путь по регламенту тортоиса к конфигуратору тортоиса (В МОДУЛЕ РАСКОММЕНТИРОВАТЬ ПЕРВОЕ!)
     # DEFAULT_AERICH_CFG_PATH = 'MODS.rest_core.pack_core.aerich_proc.config.TORTOISE_ORM'
-    DEFAULT_AERICH_CFG_PATH = 'pack_core.aerich_proc.config.TORTOISE_ORM'
+    DEFAULT_AERICH_CFG_PATH = 'pack_core.aerich_proc.aerich_conf.TORTOISE_ORM'
 
     # Основная папка с моделями тортоиса
     DEFAULT_AERICH_MODEL_PACK_PATH = '__fast_api_app.models'

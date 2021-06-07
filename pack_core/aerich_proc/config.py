@@ -32,7 +32,6 @@ def get_tortoise_config(use_import=False):
 
 
 TORTOISE_ORM = get_tortoise_config(False)
-if TORTOISE_ORM is None:
-    TORTOISE_ORM = get_tortoise_config(True)
+
 
 
