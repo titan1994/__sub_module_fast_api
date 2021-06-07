@@ -10,9 +10,11 @@ from GENERAL_CONFIG import GeneralConfig
 
 def get_tortoise_config(use_import=False):
     """
-
+    Конфигуратор моделей
     """
+
     if use_import:
+        # Нужно только при выполнении команды "aerich migrate"
         from ..RUN.PRE_LAUNCH import APP_INIT
 
     DEFAULT_DB_URI = GeneralConfig.DEFAULT_DB_URI
@@ -31,7 +33,7 @@ def get_tortoise_config(use_import=False):
     return None
 
 
-TORTOISE_ORM = get_tortoise_config(False)
+# TORTOISE_ORM = get_tortoise_config(False)
 
 
 
