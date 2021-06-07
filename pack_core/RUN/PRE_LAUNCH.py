@@ -25,7 +25,7 @@ from MODS.scripts.python.cmd_run import run
 from MODS.scripts.python.jinja import jinja_render_to_file
 from .__tools import pre_launch as launch_tools
 from GENERAL_CONFIG import GeneralConfig, FastApiConfig
-from ..system_models.system_models import tortoise_state
+
 
 """
 Для воркеров и приложения - начальный момент запуска
@@ -134,6 +134,7 @@ def migration_core_init():
         migration_aerich_tortoise()
 
         # При наличии БД - вести состояние воркеров
+        from ..system_models.system_models import tortoise_state
         get_event_loop().run_until_complete(tortoise_state.migration_clear_state_system())
 
     #
