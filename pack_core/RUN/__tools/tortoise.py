@@ -47,10 +47,9 @@ def models_inspector():
             model_path = create_models_path(pack.module_finder.path.name, pack.name)
             result_model_path.append(model_path)
 
-    # Добавление обязательных системных моделей
     from ...system_models import system_models
     obj_path = [el for el in Path(system_models.__file__).parts if el not in GeneralConfig.PROJECT_GENERAL_FOLDER.parts]
-    path_to_system_model = '.'.join(obj_path)[:-3]  # убираем .py
+    path_to_system_model = '.'.join(obj_path)[:-3] # убираем .py
     result_model_path.append(path_to_system_model)
 
     return result_model_path

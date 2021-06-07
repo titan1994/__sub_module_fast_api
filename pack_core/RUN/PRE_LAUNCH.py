@@ -21,12 +21,11 @@ from socket import gethostname
 # Для докера и продакшн сборки без виртуального окружения - указать явно путь
 sys.path.insert(0, getcwd())
 
-from tortoise.backends.base.config_generator import expand_db_url
-
 from MODS.scripts.python.cmd_run import run
 from MODS.scripts.python.jinja import jinja_render_to_file
 from .__tools import pre_launch as launch_tools
 from GENERAL_CONFIG import GeneralConfig, FastApiConfig
+from ..aerich_proc import config as cfg_tortoise
 from ..system_models.system_models import tortoise_state
 
 """
@@ -102,28 +101,6 @@ if FastApiConfig in GeneralConfig.__bases__ and GeneralConfig.DEFAULT_DB_URI:
     Tortoise.init_models(['aerich.models', *tor_tools.models_inspector()], 'models')
 
 APP_INIT = True
-
-"""
-Исправляем циклический импорт
-"""
-
-
-def get_tortoise_config():
-    """
-    Возврат конфигурации черепахи
-    """
-    return {
-        "connections": {
-            "default": expand_db_url(GeneralConfig.DEFAULT_DB_URI, True)
-        },
-        "apps": {
-            "models": {
-                "models": ['aerich.models', *tor_tools.models_inspector()],
-                "default_connection": "default",
-            }
-        },
-    }
-
 
 """
 Отдельное приложение под названием "Предварительная инициализация". 
@@ -254,8 +231,7 @@ async def migration_clear_state_system():
     :return:
     """
     print('SYSTEM DELETE OLD STATE FROM DB!')
-
-    await Tortoise.init(config=get_tortoise_config())
+    await Tortoise.init(config=cfg_tortoise.get_tortoise_config())
     await tortoise_state.filter(server=gethostname()).delete()
     await Tortoise.close_connections()
 
