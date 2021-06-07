@@ -5,6 +5,7 @@
 
 from tortoise.backends.base.config_generator import expand_db_url
 from ..RUN.__tools import tortoise as tools
+from GENERAL_CONFIG import GeneralConfig
 
 
 def get_tortoise_config(use_import=False):
@@ -12,12 +13,9 @@ def get_tortoise_config(use_import=False):
 
     """
     if use_import:
-        from ..RUN import PRE_LAUNCH as PreLaunch
-        DEFAULT_DB_URI = PreLaunch.GeneralConfig.DEFAULT_DB_URI
-    else:
-        from GENERAL_CONFIG import GeneralConfig
-        DEFAULT_DB_URI = GeneralConfig.DEFAULT_DB_URI
+        from ..RUN.PRE_LAUNCH import APP_INIT
 
+    DEFAULT_DB_URI = GeneralConfig.DEFAULT_DB_URI
     if DEFAULT_DB_URI:
         return {
             "connections": {
@@ -33,4 +31,8 @@ def get_tortoise_config(use_import=False):
     return None
 
 
-TORTOISE_ORM = get_tortoise_config(True)
+TORTOISE_ORM = get_tortoise_config(False)
+if TORTOISE_ORM is None:
+    TORTOISE_ORM = get_tortoise_config(True)
+
+
