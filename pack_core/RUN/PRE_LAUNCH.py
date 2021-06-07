@@ -11,6 +11,7 @@
 """
 
 from os import environ, getcwd, getenv
+from asyncio import get_event_loop
 from pathlib import Path
 from inspect import getfile as inspect_getfile
 from shutil import copy as shutil_copy
@@ -26,21 +27,13 @@ from .__tools import pre_launch as launch_tools
 from GENERAL_CONFIG import GeneralConfig, FastApiConfig
 from ..aerich_proc import config as cfg_tortoise
 from ..system_models.system_models import tortoise_state
+
 """
 Для воркеров и приложения - начальный момент запуска
 
 Основная инициализация приложения - при каждом запуске,
 в том числе и через воркеры (параллельные процессы, по настоящему параллельные)
 """
-async def run_create():
-    """
-    Удаление информации о воркерах на этом сервере
-    :return:
-    """
-    print('Tortoise state delete old')
-    await Tortoise.init(config=cfg_tortoise.get_tortoise_config())
-    await tortoise_state.filter(server=gethostname()).delete()
-    await Tortoise.close_connections()
 
 # env OK
 from . import ENV as env_module
@@ -104,10 +97,8 @@ if FastApiConfig in GeneralConfig.__bases__ and GeneralConfig.DEFAULT_DB_URI:
 
     from tortoise import Tortoise
     from .__tools import tortoise as tor_tools
-    from asyncio import get_event_loop
-    get_event_loop().run_until_complete(run_create())
-    Tortoise.init_models(['aerich.models', *tor_tools.models_inspector()], 'models')
 
+    Tortoise.init_models(['aerich.models', *tor_tools.models_inspector()], 'models')
 
 APP_INIT = True
 
@@ -142,6 +133,9 @@ def migration_core_init():
     """
     if FastApiConfig in GeneralConfig.__bases__:
         migration_aerich_tortoise()
+
+        # При наличии БД - вести состояние воркеров
+        get_event_loop().run_until_complete(tortoise_state.migration_clear_state_system())
 
     #
     # elif QuartApiConfig in GeneralConfig.__bases__:

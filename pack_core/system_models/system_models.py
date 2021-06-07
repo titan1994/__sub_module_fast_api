@@ -5,8 +5,6 @@ from os import getpid
 from ..aerich_proc import config as cfg_tortoise
 
 
-
-
 class tortoise_state(models.Model):
     """
     Модель нужна, чтобы следить за состоянием конфигурации orm
@@ -38,3 +36,14 @@ class tortoise_state(models.Model):
     @classmethod
     async def state_reset(cls):
         await tortoise_state.all().update(state=False)
+
+    @classmethod
+    async def migration_clear_state_system(cls):
+        """
+        Удаление информации о воркерах на этом сервере
+        :return:
+        """
+        print('SYSTEM DELETE OLD STATE FROM DB!')
+        await Tortoise.init(config=cfg_tortoise.get_tortoise_config())
+        await cls.filter(server=gethostname()).delete()
+        await Tortoise.close_connections()

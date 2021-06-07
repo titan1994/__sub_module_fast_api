@@ -44,9 +44,10 @@ if GeneralConfig.CORS_WHITE_LIST:
 
 # Запуск с ОРМ
 if GeneralConfig.DEFAULT_DB_URI:
+    GeneralConfig.TORTOISE_ORM = cfg_tortoise.get_tortoise_config()
     register_tortoise(
         app,
-        cfg_tortoise.get_tortoise_config(),
+        GeneralConfig.TORTOISE_ORM,
         generate_schemas=True,
         add_exception_handlers=True,
     )
@@ -56,6 +57,7 @@ if GeneralConfig.DEFAULT_DB_URI:
 db = None  # для поддержки многофреймворочности
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
 fast_api_init.register_all_routes_in_app(app)
+
 
 @app.on_event("startup")
 async def startup_event():
