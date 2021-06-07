@@ -122,9 +122,6 @@ def pre_launch():
     if GeneralConfig.DEFAULT_DB_URI:
         migration_core_init()
 
-        # При наличии БД - вести состояние воркеров
-        get_event_loop().run_until_complete(migration_clear_state_system())
-
     # Other (создаем файл по смыслу в папке launch и функцию first_run)
     launch_tools.init_from_func(folder_scripts='__fast_api_app/launch', func_name='first_run')
 
@@ -136,6 +133,9 @@ def migration_core_init():
     """
     if FastApiConfig in GeneralConfig.__bases__:
         migration_aerich_tortoise()
+
+        # При наличии БД - вести состояние воркеров
+        get_event_loop().run_until_complete(migration_clear_state_system())
 
     #
     # elif QuartApiConfig in GeneralConfig.__bases__:
