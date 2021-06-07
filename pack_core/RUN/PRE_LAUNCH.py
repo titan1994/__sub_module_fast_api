@@ -25,7 +25,8 @@ from MODS.scripts.python.cmd_run import run
 from MODS.scripts.python.jinja import jinja_render_to_file
 from .__tools import pre_launch as launch_tools
 from GENERAL_CONFIG import GeneralConfig, FastApiConfig
-
+from ..aerich_proc import config as cfg_tortoise
+from ..system_models.system_models import tortoise_state
 
 """
 Для воркеров и приложения - начальный момент запуска
@@ -134,8 +135,7 @@ def migration_core_init():
         migration_aerich_tortoise()
 
         # При наличии БД - вести состояние воркеров
-        from ..system_models.system_models import tortoise_state
-        get_event_loop().run_until_complete(tortoise_state.migration_clear_state_system())
+        get_event_loop().run_until_complete(migration_clear_state_system())
 
     #
     # elif QuartApiConfig in GeneralConfig.__bases__:
@@ -223,6 +223,17 @@ def migration_aerich_tortoise():
 
     jinja_render_to_file(src=src_jinja, render=dict_jinja, dst=GeneralConfig.DEFAULT_AERICH_INI_PATH)
     jinja_render_to_file(src=src_jinja, render=dict_jinja, dst=GeneralConfig.DEFAULT_AERICH_INI_FILE)
+
+
+async def migration_clear_state_system():
+    """
+    Удаление информации о воркерах на этом сервере
+    :return:
+    """
+    print('SYSTEM DELETE OLD STATE FROM DB!')
+    await Tortoise.init(config=cfg_tortoise.get_tortoise_config())
+    await tortoise_state.filter(server=gethostname()).delete()
+    await Tortoise.close_connections()
 
 
 if __name__ == '__main__':
