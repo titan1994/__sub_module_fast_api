@@ -28,8 +28,15 @@ class NoObjectMixin(ABC):
     def __no_object(self):
         pass
 
+class FastApiSettings(NoObjectMixin):
+    """
+    Настройка фаст-апи. Адаптация под проект
+    """
+    DEFAULT_AERICH_CFG_PATH = 'MODS.rest_core.pack_core.aerich_proc.aerich_conf.TORTOISE_ORM'
+    DEFAULT_DB_URI = None
 
-class FastApiConfig(NoObjectMixin):
+
+class FastApiConfig(FastApiSettings):
     """
     Конфигурация фаст-апи
     """
