@@ -11,8 +11,8 @@ class tortoise_state(models.Model):
     в каждом воркере.
     Если state = False - надо обновлять конфигурацию черепахи
     """
-    server = fields.CharField(description='Server name', max_length=31)
-    pid = fields.CharField(description='PID on this server', max_length=13)
+    server = fields.CharField(description='Server name', max_length=255)
+    pid = fields.CharField(description='PID on this server', max_length=128)
     state = fields.BooleanField(default=True)
 
     class Meta:
