@@ -23,6 +23,8 @@ sys.path.insert(0, getcwd())
 
 from MODS.scripts.python.cmd_run import run
 from MODS.scripts.python.jinja import jinja_render_to_file
+from MODS.standart_namespace.models import asf
+
 from .__tools import pre_launch as launch_tools
 from GENERAL_CONFIG import GeneralConfig, FastApiConfig
 from ..aerich_proc import config as cfg_tortoise
@@ -152,12 +154,14 @@ def migration_aerich_tortoise():
 
     print('INIT AERICH CORE')
 
+    aerich_name = asf('aerich')
+
     from aerich.models import Aerich
     path = inspect_getfile(Aerich)
     with open(path, 'r+') as file:
         lines = file.readlines()
         if lines[-1].find('table') < 0:
-            file.writelines(f"\n        table = '__{GeneralConfig.PROJECT_GENERAL_FOLDER.name}_aerich'")
+            file.writelines(f"\n        table = '{aerich_name}'")
 
     from aerich.cli import coro
     path = inspect_getfile(coro)
