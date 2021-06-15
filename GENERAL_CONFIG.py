@@ -75,13 +75,14 @@ class GeneralConfig(FastApiConfig):
     Общая конфа - она импортируется по проекту
     """
     PROJECT_NAME = 'Ядро фаст апи. Submodule'  # Open API спецификация чувствительна к имени - будьте осторожны
+    PROJECT_TABLE_NAMESPACE_PREFIX = 'fast_api_sub_module'
+    PROJECT_GENERAL_FOLDER = general_path
     DEFAULT_APP_MODE = AppMode.debug
     DEFAULT_PORT = 5111  # Порт
 
     DEFAULT_DB_URI = None
     ITS_DOCKER = None
 
-    PROJECT_GENERAL_FOLDER = general_path
     DEFAULT_WORKER_COUNT = cpu_count() + 1
     SECRET_KEY = None
 
