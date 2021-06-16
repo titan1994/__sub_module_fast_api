@@ -58,7 +58,7 @@ def models_inspector_one_path(
     if len(path_folder) == 0:
         raise TortoiseCFGModelError(f'{path_to_routes} is empty!')
 
-    if not result_model_path:
+    if result_model_path is None:
         result_model_path = []
 
     for pack in pkgutil.iter_modules(path=path_folder):
