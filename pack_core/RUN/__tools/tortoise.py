@@ -19,21 +19,26 @@ def models_inspector():
     """
     Добавление моделей
     """
-    models_inspector_one_path()
+    all_models = []
+
+    models_inspector_one_path(result_model_path=all_models)
 
     if getattr(GeneralConfig, 'FAST_API_EXT_MODELS', None):
         for model in GeneralConfig.FAST_API_EXT_MODELS:
             models_inspector_one_path(
+                result_model_path=all_models,
                 path_to_routes=model['path'],
                 path_to_pack=model['pack'],
-                exclude_pack=model.get('excl_models', None)
+                exclude_pack=model.get('excl_models', None),
             )
+    return all_models
 
 
 def models_inspector_one_path(
+        result_model_path=None,
         path_to_routes=GeneralConfig.DEFAULT_AERICH_MODEL_APP_PATH,
         path_to_pack=GeneralConfig.DEFAULT_AERICH_MODEL_PACK_PATH,
-        exclude_pack=None
+        exclude_pack=None,
 ):
     """
     Основная функция формирования подстановки моделей.
@@ -53,7 +58,8 @@ def models_inspector_one_path(
     if len(path_folder) == 0:
         raise TortoiseCFGModelError(f'{path_to_routes} is empty!')
 
-    result_model_path = []
+    if not result_model_path:
+        result_model_path = []
 
     for pack in pkgutil.iter_modules(path=path_folder):
         if not pack.ispkg:
