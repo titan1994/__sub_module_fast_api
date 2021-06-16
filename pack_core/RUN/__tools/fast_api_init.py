@@ -24,7 +24,8 @@ def register_all_routes_in_app(app):
                 app,
                 path_to_routes=model['path'],
                 path_to_pack=model['pack'],
-                exclude_pack=model.get('excl_routes', None)
+                exclude_pack=model.get('excl_routes', None),
+                include_pack=model.get('incl_routes', None)
             )
 
 
@@ -32,7 +33,8 @@ def register_routes_in_app_from_path(
         app,
         path_to_routes=GeneralConfig.DEFAULT_AERICH_MODEL_APP_PATH,
         path_to_pack=GeneralConfig.DEFAULT_AERICH_MODEL_PACK_PATH,
-        exclude_pack=None
+        exclude_pack=None,
+        include_pack=None
 ):
     """
     Регистрация всех роутов по заданному пути
@@ -59,6 +61,14 @@ def register_routes_in_app_from_path(
 
         if pack.name.startswith('__') or pack.name.startswith('_'):
             continue
+
+        if include_pack:
+            if pack.name not in include_pack:
+                continue
+
+        elif exclude_pack:
+            if pack.name in exclude_pack:
+                continue
 
         file_path = pack.module_finder.path / pack.name / f'{DEFAULT_ROUTER_FILE_NAME}.py'
         if file_path.is_file():

@@ -30,6 +30,7 @@ def models_inspector():
                 path_to_routes=model['path'],
                 path_to_pack=model['pack'],
                 exclude_pack=model.get('excl_models', None),
+                include_pack=model.get('incl_models', None),
             )
     return all_models
 
@@ -39,6 +40,7 @@ def models_inspector_one_path(
         path_to_routes=GeneralConfig.DEFAULT_AERICH_MODEL_APP_PATH,
         path_to_pack=GeneralConfig.DEFAULT_AERICH_MODEL_PACK_PATH,
         exclude_pack=None,
+        include_pack=None
 ):
     """
     Основная функция формирования подстановки моделей.
@@ -68,7 +70,11 @@ def models_inspector_one_path(
         if pack.name.startswith('__') or pack.name.startswith('_'):
             continue
 
-        if exclude_pack:
+        if include_pack:
+            if pack.name not in include_pack:
+                continue
+
+        elif exclude_pack:
             if pack.name in exclude_pack:
                 continue
 
