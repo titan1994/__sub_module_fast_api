@@ -93,6 +93,9 @@ if FastApiConfig in GeneralConfig.__bases__:
 
 # ADD - init
 launch_tools.init_from_func(folder_scripts='__fast_api_app/init', func_name='first_init')
+if getattr(GeneralConfig, 'FAST_API_EXT_LAUNCH', None):
+    for launch_folder in GeneralConfig.FAST_API_EXT_LAUNCH:
+        launch_tools.init_from_func(folder_scripts=launch_folder, func_name='first_init')
 
 if FastApiConfig in GeneralConfig.__bases__ and GeneralConfig.DEFAULT_DB_URI:
     # Чтобы работал педантик и прочие радости
@@ -126,6 +129,9 @@ def pre_launch():
 
     # Other (создаем файл по смыслу в папке launch и функцию first_run)
     launch_tools.init_from_func(folder_scripts='__fast_api_app/launch', func_name='first_run')
+    if getattr(GeneralConfig, 'FAST_API_EXT_PRE_LAUNCH', None):
+        for pre_launch_folder in GeneralConfig.FAST_API_EXT_PRE_LAUNCH:
+            launch_tools.init_from_func(folder_scripts=pre_launch_folder, func_name='first_run')
 
 
 def migration_core_init():
