@@ -48,6 +48,14 @@ def register_routes_in_app_from_path(
         if name_dir.startswith('__') or name_dir.startswith('_'):
             continue
 
+        if include_pack:
+            if name_dir not in include_pack:
+                continue
+
+        elif exclude_pack:
+            if name_dir in exclude_pack:
+                continue
+
         path_folder.append(path_to_routes / name_dir)
 
     if len(path_folder) == 0:
@@ -62,13 +70,13 @@ def register_routes_in_app_from_path(
         if pack.name.startswith('__') or pack.name.startswith('_'):
             continue
 
-        if include_pack:
-            if pack.name not in include_pack:
-                continue
-
-        elif exclude_pack:
-            if pack.name in exclude_pack:
-                continue
+        # if include_pack:
+        #     if pack.name not in include_pack:
+        #         continue
+        #
+        # elif exclude_pack:
+        #     if pack.name in exclude_pack:
+        #         continue
 
         file_path = pack.module_finder.path / pack.name / f'{DEFAULT_ROUTER_FILE_NAME}.py'
         if file_path.is_file():
